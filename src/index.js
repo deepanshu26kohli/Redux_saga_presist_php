@@ -3,12 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { Provider } from 'react-redux';
+import {store , persistor } from './Redux/Store/Store';
+import { PersistGate } from 'redux-persist/integration/react';
+persistor.persist();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // <Provider store={store}>
+  //    <App />
+  // </Provider>
+  <Provider store={store}>
+    <PersistGate  loading={null} persistor={persistor} onBeforeLift={() => console.log('Rehydrated')}>
+      <App />
+    </PersistGate>
+  </Provider>
+   
+
 );
 
 // If you want to start measuring performance in your app, pass a function
