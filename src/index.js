@@ -6,17 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import {store , persistor } from './Redux/Store/Store';
 import { PersistGate } from 'redux-persist/integration/react';
+import {BrowserRouter} from 'react-router-dom'
 persistor.persist();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <Provider store={store}>
   //    <App />
   // </Provider>
+  <BrowserRouter>
   <Provider store={store}>
-    <PersistGate  loading={null} persistor={persistor} onBeforeLift={() => console.log('Rehydrated')}>
+    <PersistGate  loading={null} persistor={persistor} onBeforeLift={() => {}}>
       <App />
     </PersistGate>
   </Provider>
+  </BrowserRouter>
    
 
 );

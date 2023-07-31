@@ -1,7 +1,7 @@
 import {takeEvery , put } from 'redux-saga/effects'
 
 function* getProducts(){
-    let data = yield fetch('http://localhost/MyPHP/Products.php')
+    let data = yield fetch('http://localhost/Products/index.php')
     data = yield data.json()
     yield put({type: 'SET_PRODUCT', data: data})
 }
